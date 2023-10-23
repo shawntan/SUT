@@ -32,7 +32,7 @@ python -m torch.distributed.run \
     --master_port=$MASTER_PORT \
     --rdzv_backend=c10d --rdzv_endpoint=$MASTER_ADDR:$((MASTER_PORT+1)) --rdzv_id ${EXP_NAME} \
     --max_restarts=10 \
-    $(which fairseq-train) ../Transformer-Clinic/data-bin/${DATA} \
+    $(which fairseq-train) $TRANSFORMER_CLINIC_ROOT/data-bin/${DATA} \
     --arch ${ARCHS} --share-all-embeddings --amp \
     --encoder-halting --decoder-halting --actloss ${ACTLOSS} \
     --optimizer adam --adam-betas '(0.9, 0.98)' --adam-eps 1e-9 --clip-norm 0.0 \
